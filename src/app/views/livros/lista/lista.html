@@ -1,0 +1,30 @@
+static function handleClick() {
+    console.log("Clicou")
+}
+
+<html>
+<body>
+    <a href="/">Página inicial</a>
+    <a href="/livros/cadastro"> - Cadastro</a>
+    
+    <h1>Livros</h1>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>TITULO</td>
+        </tr>
+
+        <tr for (livro in data.livros) >
+            
+            <td>${livro.id}</td>
+            <td title=`${livro.descricao}`>${livro.titulo}</td>
+            <td>
+                <button 
+                    style="border: 1px solid; border-radius: 1rem; background-color: #cecece"
+                    on-click(handleClick)
+                >X</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

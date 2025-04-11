@@ -1,4 +1,5 @@
 const db = require("../../config/database");
+const LivroDao = require("../infra/livro-dao");
 
 module.exports = (app) => {
 
@@ -14,12 +15,33 @@ module.exports = (app) => {
     })
     app.get("/livros", (req, res) => {
 
-        db.all("SELECT * FROM livros", (error, results) => {
+        const livroDao = new LivroDao(db);
+        livroDao.listar()
+            .then(livros => {
+                res.marko(require("../views/livros/lista/lista.marko"), {
+                    livros: livros,
+                    excluirFunc: livroDao.excluir
+                });
+            })
+            .catch(error => console.log(error));
 
-            res.marko(require("../views/livros/lista/lista.marko"), {
-                livros: results
-            });
-        });
+    })
+
+    app.get("/livros/cadastro", (req, res) => {
+
+        res.marko(require("../views/livros/form/form.marko"));
+
+    })
+
+    app.post("/livros", (req, res) => {
+
+        const livroDao = new LivroDao(db);
+        livroDao.cadastrar(req.body)
+            .then(() => {
+                console.log("Livro adicionado com sucesso!");
+                console.log("Mudando de página...")
+            })
+            .catch(error => console.log(error));
 
     })
 }

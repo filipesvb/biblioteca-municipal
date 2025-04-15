@@ -9,6 +9,11 @@ const view = (livros) => {
             <title>Livros</title>
         </head>
         <body>
+
+            <h1>Livros</h1>
+            <span>
+                <a href="/cadastro">Cadastrar Livros</a>
+            </span>
             <table border>
                 <tr>
                     <td>Id</td>

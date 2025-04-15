@@ -1,6 +1,12 @@
 import sqlite3 from "sqlite3";
 sqlite3.verbose();
-const db = new sqlite3.Database('data.db');
+const db = new sqlite3.Database('data.db', (error) => {
+    if(error) {
+        console.log("Erro ao conectar com o banco de dados! - " + error.message)
+    } else {
+        console.log("Conectado ao banco de dados =)")
+    }
+});
 
 const CRIA_TABELA = `
     CREATE TABLE livros (
@@ -15,17 +21,26 @@ const CRIA_TABELA = `
 `
 
 db.serialize(() => {
-    db.run(CRIA_TABELA);
+    // db.run(CRIA_TABELA, (error) => {
+    //     if(error) {
+    //         console.log("Não foi possível criar a tabela");
+    //     } else {
+    //         console.log("Tabela criada com sucesso!");
+    //     }
+    // });
 
-    const stmt = db.prepare("INSERT INTO lorem VALUES (?)");
-    for (let i = 0; i < 10; i++) {
-        stmt.run("Ipsum " + i);
-    }
-    stmt.finalize();
+});
 
-    db.each("SELECT rowid AS id, info FROM lorem", (err, row) => {
-        console.log(row.id + ": " + row.info);
+process.on('SIGINT', () => {
+    console.log('Fechando a conexão com o banco...');
+    db.close((err) => {
+        if (err) {
+            console.error('Erro ao fechar o banco:', err.message);
+        } else {
+            console.log('Banco de dados fechado.');
+        }
+        process.exit(0); // Finaliza o processo Node com sucesso
     });
 });
 
-db.close();
+export default db;

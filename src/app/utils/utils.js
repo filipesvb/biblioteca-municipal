@@ -1,5 +1,0 @@
-const clickLivro = () => {
-
-}
-
-const arrayOfFunctions = [];

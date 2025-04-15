@@ -1,5 +1,5 @@
-const app = require("./src/config/_express");
+import app from "./src/app.js";
 
-app.listen(8080, () => {
-    console.log("Servidor rodando na porta 8080")
+app.listen(3000, () => {
+    console.log("servidor rodando...")
 })

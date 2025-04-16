@@ -1,7 +1,11 @@
 
 const view = (info) => {
     return `
-        <html>
+    <html>
+        <head>
+            <link rel="stylesheet" href="/static/css/cadastro.css" />
+        </head>
+        <body>
             <form action="/cadastro" method="post">
                 <input type="hidden" name="id" id="id">
 
@@ -34,7 +38,13 @@ const view = (info) => {
                     <label for="paginas">Páginas:</label>
                     <input type="number" name="paginas" id="paginas" />
                 </div>
+
+                <label>
+                    <input type="submit" value="Enviar" />
+                </label>
             </form>
+
+        </body>
         </html>
     `
 }

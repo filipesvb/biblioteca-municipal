@@ -6,7 +6,7 @@ const view = (info) => {
             <link rel="stylesheet" href="/static/css/cadastro.css" />
         </head>
         <body>
-            <form action="/cadastro" method="post">
+            <form action="/livros" method="post">
                 <input type="hidden" name="id" id="id">
 
                 <div>

@@ -1,20 +1,23 @@
-import view from "../views/livroView.js"
+import view from "../views/livroView.js";
+import livroModel from "../models/livrosModel.js";
 
-const livros = [
-    {
-        id: 1,
-        titulo: "Harry Potter"
-    },
-    {
-        id: 2,
-        titulo: "O Senhor dos Anéis"
-    }
-]
 
 class LivroController {
 
-    static async listar(req, res) {
-        res.status(200).send(view(livros))
+    static listar(req, res) {
+        livroModel.listaLivros()
+        .then(results => {
+            res.status(200).send(view(results))
+        })
+        .catch(error => console.log(error))
+    }
+    static cadastrar(req, res) {
+        const livro = req.body;
+        livroModel.cadastraLivro(livro)
+        .then(
+            res.status(201).redirect("/livros")
+        )
+        .catch(error => console.log(error))
     }
 
 }

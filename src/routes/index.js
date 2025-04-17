@@ -15,7 +15,8 @@ const routes = (app) => {
     app.use("/static", express.static("src/public"));
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json(), livros);
-
+    
+    
 
 }
 

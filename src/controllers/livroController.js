@@ -11,6 +11,9 @@ class LivroController {
         })
         .catch(error => console.log(error))
     }
+    static buscarPorId(id) {
+        livroModel.buscarPorId(id)
+    }
     static cadastrar(req, res) {
         const livro = req.body;
         livroModel.cadastraLivro(livro)
@@ -18,6 +21,9 @@ class LivroController {
             res.status(201).redirect("/livros")
         )
         .catch(error => console.log(error))
+    }
+    static editar(req, res) {
+
     }
 
 }

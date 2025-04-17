@@ -7,7 +7,7 @@ const view = (info) => {
         </head>
         <body>
             <form action="/livros" method="post">
-                <input type="hidden" name="id" id="id">
+                <input type="hidden" name="id" id="id" value="${info.id}">
 
                 <div>
                     <label for="titulo">Titulo:</label>

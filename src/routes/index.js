@@ -11,6 +11,9 @@ const routes = (app) => {
     app.get("/cadastro", (req, res) => {
         res.status(200).send(formulario())
     })
+    app.get("/cadastro/:id", (req, res) => {
+        res.status(200).send(formulario(req.params.id))
+    })
     
     app.use("/static", express.static("src/public"));
     app.use(express.urlencoded({ extended: true }));

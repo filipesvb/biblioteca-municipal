@@ -6,7 +6,7 @@
 }
 
 form {
-    background: tomato;
+    background: #f3f3f3;
     display: flex;
     flex-direction: column;
     gap: .2rem;
@@ -14,7 +14,7 @@ form {
     div {
         display: flex;
         align-items: center;
-        height: 80px;
+        height: 40px;
     }
     div label {
         display: inline-flex;
@@ -23,14 +23,17 @@ form {
         width: 100px;
     }
     div input, div textarea {
+        border: 1px black solid;
+        border-radius: .24rem;
         resize: none;
         width: 200px;
         height: 100%;
-        font-size: 18px;
+        font-size: 16px;
+        padding: 0 .3rem;
     }
     div textarea {
         height: 100%;
-        font-size: 16px;
+        font-size: 14px;
     }
 
 }

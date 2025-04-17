@@ -18,6 +18,21 @@ const livroModel = {
         })
     },
 
+    buscarPorId(id){
+        return new Promise((resolve, reject) => {
+            db.get(`
+                    SELECT * FROM livros
+                    WHERE id = ?
+                `, [id], (error, result) => {
+                if(error) {
+                    console.log(error);
+                    return reject(`Não foi possível buscar o livro`)
+                }
+                return resolve(result)
+            })
+        })
+    },
+
     cadastraLivro(livro) {
         return new Promise((resolve, reject) => {
             console.log(`Livro: ` , livro)

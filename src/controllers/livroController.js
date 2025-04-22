@@ -17,7 +17,7 @@ class LivroController {
     static async buscarPorId(req, res, next) {
         try {
             const livroResultado = await livroModel.buscarPorId(req.params.id);
-            res.status(200).send(view([livroResultado]))
+            return livroResultado
         } catch (error) {
             console.log(error)
             res.status(500).json({message: "Erro interno do servidor"})
@@ -32,8 +32,14 @@ class LivroController {
         )
         .catch(error => console.log(error))
     }
-    static async editar(req, res) {
-
+    static async editar(req, res, next) {
+        const novoLivro = req.body;
+        try {
+            const livro = await livroModel.editar(novoLivro)
+            console.log(livro)
+        } catch (error) {
+            res.status(500).json({message: "Erro interno do servidor"})
+        }
     }
 
 }

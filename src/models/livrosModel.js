@@ -63,6 +63,34 @@ const livroModel = {
                 return resolve();
             })
         })
+    },
+
+    editaLivro(livro) {
+        return new Promise((resolve, reject) => {
+            db.run(
+                `
+                    UPDATE livros
+                    SET
+                        titulo = ?,
+                        editora = ?,
+                        autor = ?,
+                        descricao = ?,
+                        preco = ?,
+                        paginas = ?,
+                    ) VALUES ?, ?,?,?,?,?
+                    WHERE id = ?
+
+                `
+                , 
+                [ livro.titulo, livro.editora, livro.autor, livro.descricao, livro.preco, livro.paginas, livro.id]
+                , 
+                (erro) => {
+                    if(erro) {
+                        return reject("Não deu pra atualizar o livro")
+                    }
+                    return resolve()
+                })
+        })
     }
 }
 

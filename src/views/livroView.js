@@ -1,6 +1,5 @@
 
 const view = (livros) => {
-    console.log(livros)
     return `
         <!DOCTYPE html>
         <html lang="pt-BR">
@@ -28,7 +27,7 @@ const view = (livros) => {
                             
                             <td>${livro.id}</td>
                             <td>${livro.titulo}</td>
-                            <td><a href="#">Editar</a></td>
+                            <td><a href="/cadastro/${livro.id}">Editar</a></td>
                             <td><a href="#">Excluir</a></td>
                             
                         </tr>

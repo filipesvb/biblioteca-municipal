@@ -4,17 +4,27 @@ import livroModel from "../models/livrosModel.js";
 
 class LivroController {
 
-    static listar(req, res) {
-        livroModel.listaLivros()
-        .then(results => {
-            res.status(200).send(view(results))
-        })
-        .catch(error => console.log(error))
+    static async listar(req, res) {
+        try{
+            const livrosResultado = await livroModel.listaLivros()
+            res.status(200).send(view(livrosResultado))
+        } catch( error ) {
+            res.status(500).json({message: "Erro interno do servidor"})
+        }
+        
+        
     }
-    static buscarPorId(id) {
-        livroModel.buscarPorId(id)
+    static async buscarPorId(req, res, next) {
+        try {
+            const livroResultado = await livroModel.buscarPorId(req.params.id);
+            res.status(200).send(view([livroResultado]))
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({message: "Erro interno do servidor"})
+        }
+
     }
-    static cadastrar(req, res) {
+    static async cadastrar(req, res) {
         const livro = req.body;
         livroModel.cadastraLivro(livro)
         .then(
@@ -22,7 +32,7 @@ class LivroController {
         )
         .catch(error => console.log(error))
     }
-    static editar(req, res) {
+    static async editar(req, res) {
 
     }
 

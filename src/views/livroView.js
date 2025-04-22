@@ -1,5 +1,6 @@
 
 const view = (livros) => {
+    console.log(livros)
     return `
         <!DOCTYPE html>
         <html lang="pt-BR">

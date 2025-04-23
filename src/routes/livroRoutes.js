@@ -5,9 +5,7 @@ const routes = express.Router();
 routes.get("/livros", LivroController.listar);
 routes.get("/livros/:id", LivroController.buscarPorId)
 routes.post("/livros", LivroController.cadastrar);
-routes.put("/livros", (req, res) => {
-    res.send("hello")
-})
+routes.put("/livros", LivroController.editar)
 
 
 export default routes;

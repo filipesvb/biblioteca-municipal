@@ -76,8 +76,7 @@ const livroModel = {
                         autor = ?,
                         descricao = ?,
                         preco = ?,
-                        paginas = ?,
-                    ) VALUES ?, ?,?,?,?,?
+                        paginas = ?
                     WHERE id = ?
 
                 `
@@ -86,6 +85,7 @@ const livroModel = {
                 , 
                 (erro) => {
                     if(erro) {
+                        console.log(erro)
                         return reject("Não deu pra atualizar o livro")
                     }
                     return resolve()

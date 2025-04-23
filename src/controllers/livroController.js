@@ -35,9 +35,10 @@ class LivroController {
     static async editar(req, res, next) {
         const novoLivro = req.body;
         try {
-            const livro = await livroModel.editar(novoLivro)
-            console.log(livro)
+            await livroModel.editaLivro(novoLivro)
+            res.status(200).redirect('/livros');
         } catch (error) {
+            console.log(error)
             res.status(500).json({message: "Erro interno do servidor"})
         }
     }

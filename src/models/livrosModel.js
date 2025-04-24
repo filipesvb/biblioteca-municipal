@@ -91,6 +91,25 @@ const livroModel = {
                     return resolve()
                 })
         })
+    },
+
+    deletaLivro(id) {
+        return new Promise((resolve, reject) => {
+            db.run(
+                `
+                    DELETE FROM livros
+                    WHERE id = ?
+                `,
+                [id],
+                (error) => {
+                    if(error) {
+                        console.log(error);
+                        return reject(`Não foi possível deletar o livro`)
+                    }
+                    return resolve();
+                }
+            )
+        })
     }
 }
 

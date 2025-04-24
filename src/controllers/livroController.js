@@ -44,9 +44,16 @@ class LivroController {
     }
 
     static async deletar(req, res, next) {
-        const id = req.params;
-        
+        const id = req.params.id;
         console.log('Deletando: ' + id)
+        try{
+            await livroModel.deletaLivro(id);
+            console.log('TESTE TESTE TESTE TESTE TESTE')
+            res.status(200).send();
+        } catch(error) {
+            console.log(error)
+            res.status(500);
+        }
     }
 
 }

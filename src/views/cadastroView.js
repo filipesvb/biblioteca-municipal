@@ -14,7 +14,7 @@ const view = async (req, res, next) => {
         <body>
             
             <form action="/livros" method="POST">
-                <input type="hidden" name="_method" value="PUT">
+                ${(livro.id) ? `<input type="hidden" name="_method" value="PUT">` : ''}
                 <input type="hidden" name="id" id="id" value="${livro.id}">
 
                 <div>

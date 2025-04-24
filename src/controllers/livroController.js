@@ -43,6 +43,12 @@ class LivroController {
         }
     }
 
+    static async deletar(req, res, next) {
+        const id = req.params;
+        
+        console.log('Deletando: ' + id)
+    }
+
 }
 
 export default LivroController;

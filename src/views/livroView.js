@@ -14,7 +14,7 @@ const view = (livros) => {
             <span>
                 <a href="/cadastro">Cadastrar Livros</a>
             </span>
-            <table border>
+            <table border class="tabela_livros">
                 <tr>
                     <td>Id</td>
                     <td>Titulo</td>
@@ -23,17 +23,19 @@ const view = (livros) => {
                 </tr>
                 ${livros.map(livro => {
                     return `
-                        <tr>
+                        <tr class="livro_${livro.id}">
                             
                             <td>${livro.id}</td>
                             <td>${livro.titulo}</td>
                             <td><a href="/cadastro/${livro.id}">Editar</a></td>
-                            <td><a href="#">Excluir</a></td>
+                            <td><a href="#" data-ref="${livro.id}" data-type="remocao">Excluir</a></td>
                             
                         </tr>
                     `
                 }).join('')}
             </table>
+
+            <script src="/static/js/deletaLivro.js"></script>
         </body>
         </html>
     `

@@ -1,8 +1,9 @@
 import styled from "styled-components"
 
-const Condtainer = styled.header`
+const HeadContainer = styled.header`
     width: 100%;
     background-color: white;
+    padding: 1rem 10%;
 `
 
 const Wrapper = styled.div`
@@ -12,11 +13,11 @@ const Wrapper = styled.div`
 
 const Header = () => {
     return (
-        <Container>
+        <HeadContainer>
             <Wrapper>
                 <h2>Header</h2>
             </Wrapper>
-        </Container>
+        </HeadContainer>
     )
 }
 

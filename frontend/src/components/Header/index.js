@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import logotype from "../../assets/logotype.svg"
 import Menu from "./Menu"
+import { Link } from "react-router-dom"
 
 const HeadContainer = styled.header`
     width: 100%;
     background-color: white;
     padding: .4rem 0;
-    
-    `
+`
     
 const Wrapper = styled.div`
     width: 100%;
@@ -16,7 +16,8 @@ const Wrapper = styled.div`
 `
 
 const Logotype = styled.img`
-    
+    object-fit: contain;
+    object-position: -12px center;
 `
 
 
@@ -24,7 +25,9 @@ const Header = () => {
     return (
         <HeadContainer>
             <Wrapper>
-                <Logotype src={logotype} />
+                <Link to="/">
+                    <Logotype src={logotype} />
+                </Link>
             </Wrapper>
             <Wrapper>
                 <Menu />

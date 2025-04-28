@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import Home from './routes/Home';
+import Acervo from './routes/Acervo';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Header from './components/Header';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -12,9 +13,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
   }
 
   body {
+    
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -28,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
       monospace;
   }
 
+
 `
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -35,8 +40,10 @@ root.render(
   <React.StrictMode>
     <GlobalStyle />
     <BrowserRouter>
+      <Header />
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/acervo" element={<Acervo />} />
       </Routes>
     </BrowserRouter>
     

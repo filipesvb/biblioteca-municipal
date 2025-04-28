@@ -1,5 +1,10 @@
 import app from "./src/app.js";
 
-app.listen(3000, () => {
-    console.log("servidor rodando...")
-})
+try {
+
+    app.listen(8000, () => {
+        console.log("servidor rodando...")
+    })
+} catch(error) {
+    console.log(error.message)
+}

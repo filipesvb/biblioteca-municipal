@@ -2,10 +2,11 @@ import express from "express";
 import livros from "./livroRoutes.js"
 import cadastro from "./cadastroRoutes.js"
 import methodOverride from "method-override"
+import cors from "cors"
 
 const routes = (app) => {
     
-    
+
     app.get("/", (req, res) => {
         res.status(200).send("Página inicial");
     })

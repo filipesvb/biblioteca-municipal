@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Container from "../components/Container"
+import { useEffect, useState } from "react";
+import { getLivros } from "../services/livros";
 
 const ContainerRow = styled.div`
     width: 100%;
@@ -21,10 +23,32 @@ const RowTitle = styled.h2`
 `
 
 const Acervo = () => {
+
+    const [livros, setLivros] = useState([]);
+
+    async function fetchLivros() {
+        const livrosResultado = await getLivros();
+        setLivros(livrosResultado);
+    }
+
+    useEffect(() => {
+        fetchLivros()
+    }, [])
+
+    console.log(livros)
+
     return (
         <Container>
             <ContainerRow>
                 <RowTitle>Destaques</RowTitle>
+                <hr />
+            </ContainerRow>
+            <ContainerRow>
+                <RowTitle>Livros novos</RowTitle>
+                <hr />
+            </ContainerRow>
+            <ContainerRow>
+                <RowTitle>Por categoria</RowTitle>
                 <hr />
             </ContainerRow>
         </Container>

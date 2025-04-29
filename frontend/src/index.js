@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Home from './routes/Home';
-import Acervo from './routes/Acervo';
-import reportWebVitals from './reportWebVitals';
-import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Header from './components/Header';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Home from "./routes/Home";
+import Acervo from "./routes/Acervo";
+import reportWebVitals from "./reportWebVitals";
+import { createGlobalStyle } from "styled-components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -33,9 +33,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
-`
+`;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <GlobalStyle />
@@ -46,7 +46,6 @@ root.render(
         <Route path="/acervo" element={<Acervo />} />
       </Routes>
     </BrowserRouter>
-    
   </React.StrictMode>
 );
 

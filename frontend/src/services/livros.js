@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const livrosApi = axios.create({
-  baseURL: "https://potential-orbit-pw6wwwpp54pcr449-8000.app.github.dev" // ou o domínio onde sua API está hospedada
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 async function getLivros() {
@@ -9,6 +9,4 @@ async function getLivros() {
   return response.data;
 }
 
-export {
-  getLivros
-};
+export { getLivros };

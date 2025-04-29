@@ -26,6 +26,7 @@ const RowTitle = styled.h2`
 
 const LivrosContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: .5rem;
   padding-top: .5rem;
 `

@@ -32,7 +32,7 @@ class LivroController {
     console.log(livro)
     livroModel
       .cadastraLivro(livro)
-      .then(res.status(201))
+      .then(res.status(201).redirect("/cadastro"))
       .catch((error) => console.log(error));
   }
   static async editar(req, res, next) {

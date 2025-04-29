@@ -16,7 +16,8 @@ const CRIA_TABELA = `
         autor TEXT,
         descricao TEXT,
         preco REAL,
-        paginas INTEGER
+        paginas INTEGER,
+        imagem TEXT NOT NULL
     );
 `
 

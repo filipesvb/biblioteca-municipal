@@ -43,8 +43,9 @@ const livroModel = {
                         autor,
                         descricao,
                         preco,
-                        paginas
-                    ) VALUES (?,?,?,?,?,?)
+                        paginas,
+                        imagem
+                    ) VALUES (?,?,?,?,?,?,?)
                 `, 
                 [
                     livro.titulo,
@@ -52,7 +53,8 @@ const livroModel = {
                     livro.autor,
                     livro.descricao,
                     livro.preco,
-                    livro.paginas
+                    livro.paginas,
+                    livro.imagem
                 ]
                 , 
                 (error) => {

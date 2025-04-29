@@ -1,7 +1,7 @@
 import LivroController from "../controllers/livroController.js"
 
 const view = async (req, res, next) => {
-    let livro = {id: "", titulo: "", editora: "", autor: "", descricao: "", preco: ""}
+    let livro = {id: "", titulo: "", editora: "", autor: "", descricao: "", preco: "", imagem: ""}
     if(req.params.id) {
         livro = await LivroController.buscarPorId(req)
     }
@@ -45,6 +45,11 @@ const view = async (req, res, next) => {
                 <div>
                     <label for="paginas">Páginas:</label>
                     <input type="number" name="paginas" id="paginas" value="${livro.paginas}"/>
+                </div>
+
+                <div>
+                    <label for="imagem">Imagem de capa:</label>
+                    <input type="text" name="imagem" id="imagem" value="${livro.imagem}"/>
                 </div>
 
                 <label>

@@ -38,7 +38,6 @@ const Acervo = () => {
 
   function renderLivros() {
     try{
-      console.log(livros)
       if(livros instanceof AxiosError) {
         throw new Error(livros.message)
       }
@@ -60,6 +59,7 @@ const Acervo = () => {
         <RowTitle>Destaques</RowTitle>
         <hr />
         {renderLivros()}
+        {console.log(livros)}
       </ContainerRow>
       <ContainerRow>
         <RowTitle>Livros novos</RowTitle>

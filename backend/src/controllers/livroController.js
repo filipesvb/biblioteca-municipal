@@ -10,6 +10,14 @@ class LivroController {
       res.status(500).json({ message: "Erro interno do servidor" });
     }
   }
+  static async listarAdmin(req, res) {
+    try {
+      const livrosResultado = await livroModel.listaLivros();
+      res.status(200).send(view(livrosResultado));
+    } catch (error) {
+      res.status(500).json({ message: "Erro interno do servidor" });
+    }
+  }
   static async buscarPorId(req, res, next) {
     try {
       const livroResultado = await livroModel.buscarPorId(req.params.id);

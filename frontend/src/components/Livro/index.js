@@ -15,8 +15,12 @@ const LivroContainer = styled.div`
     }
 
     h2 {
+        width: 100%;
         font-size: .6rem;
-        padding: 0 .6rem;
+        padding: 0 1rem 0 0;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 `
 

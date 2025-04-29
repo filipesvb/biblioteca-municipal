@@ -29,13 +29,15 @@ class LivroController {
   }
   static async cadastrar(req, res) {
     const livro = req.body;
+    console.log(livro)
     livroModel
       .cadastraLivro(livro)
-      .then(res.status(201).redirect("/livros"))
+      .then(res.status(201))
       .catch((error) => console.log(error));
   }
   static async editar(req, res, next) {
     const novoLivro = req.body;
+    console.log(novoLivro)
     try {
       await livroModel.editaLivro(novoLivro);
       res.status(200).redirect("/livros");

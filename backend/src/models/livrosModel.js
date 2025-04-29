@@ -78,12 +78,13 @@ const livroModel = {
                         autor = ?,
                         descricao = ?,
                         preco = ?,
-                        paginas = ?
+                        paginas = ?,
+                        imagem = ?
                     WHERE id = ?
 
                 `
                 , 
-                [ livro.titulo, livro.editora, livro.autor, livro.descricao, livro.preco, livro.paginas, livro.id]
+                [ livro.titulo, livro.editora, livro.autor, livro.descricao, livro.preco, livro.paginas, livro.imagem, livro.id]
                 , 
                 (erro) => {
                     if(erro) {

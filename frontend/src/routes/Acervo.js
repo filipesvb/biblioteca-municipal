@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Container from "../components/Container";
+import Livro from "../components/Livro";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { getLivros } from "../services/livros";
@@ -8,6 +9,7 @@ const ContainerRow = styled.div`
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
+  
 
   hr {
     height: 2px;
@@ -21,6 +23,12 @@ const RowTitle = styled.h2`
   font-weight: normal;
   color: #555555;
 `;
+
+const LivrosContainer = styled.div`
+  display: flex;
+  gap: .5rem;
+  padding-top: .5rem;
+`
 
 const Acervo = () => {
   const [livros, setLivros] = useState([]);
@@ -42,7 +50,7 @@ const Acervo = () => {
         throw new Error(livros.message)
       }
       return livros.map((livro) => (
-        <div key={livro.id}>{livro.titulo}</div>
+        <Livro key={livro.id} titulo={livro.titulo} imagemCapa={livro.imagem}/>
       ))
     } catch(erro) {
       return <div>{erro.message}</div>
@@ -58,8 +66,9 @@ const Acervo = () => {
       <ContainerRow>
         <RowTitle>Destaques</RowTitle>
         <hr />
-        {renderLivros()}
-        {console.log(livros)}
+        <LivrosContainer>
+          {renderLivros()}
+        </LivrosContainer>
       </ContainerRow>
       <ContainerRow>
         <RowTitle>Livros novos</RowTitle>

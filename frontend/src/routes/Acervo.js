@@ -4,11 +4,18 @@ import Livro from "../components/Livro";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { getLivros } from "../services/livros";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const ContainerRow = styled.div`
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
   
 
   hr {
@@ -25,10 +32,12 @@ const RowTitle = styled.h2`
 `;
 
 const LivrosContainer = styled.div`
+  align-self: center;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: .5rem;
+  justify-content: flex-start;
+  max-width: 1000px;
+  overflow: auto;
+  gap: 1rem;
   padding-top: .5rem;
 `
 
@@ -52,7 +61,9 @@ const Acervo = () => {
         throw new Error(livros.message)
       }
       return livros.map((livro) => (
-        <Livro key={livro.id} titulo={livro.titulo} imagemCapa={livro.imagem}/>
+        <SwiperSlide>
+          <Livro key={livro.id} titulo={livro.titulo} imagemCapa={livro.imagem}/>
+        </SwiperSlide>
       ))
     } catch(erro) {
       return <div>{erro.message}</div>
@@ -69,7 +80,16 @@ const Acervo = () => {
         <RowTitle>Destaques</RowTitle>
         <hr />
         <LivrosContainer>
-          {renderLivros()}
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={0}
+            slidesPerView={5}
+            navigation
+            pagination={{ clickable: true }}
+            loop={true}
+          >
+            {renderLivros()}
+          </Swiper>
         </LivrosContainer>
       </ContainerRow>
       <ContainerRow>
